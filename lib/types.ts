@@ -34,11 +34,21 @@ export interface VerticalConfig {
     trustItems: string[]
   }
 
+  clientLogos?: {
+    titulo: string
+    logos: Array<{
+      nombre: string
+      placeholder?: boolean
+      url?: string
+    }>
+  }
+
   stats: {
     titulo: string
     items: Array<{
       valor: string
-      descripcion: string
+      label: string
+      fuente?: string
     }>
     parrafoLegal?: string
   }
@@ -49,7 +59,9 @@ export interface VerticalConfig {
       icono: string
       nombre: string
       descripcion: string
-      datosClave: string
+      destacado?: boolean
+      tag?: string | null
+      datosClave?: string
     }>
   }
 

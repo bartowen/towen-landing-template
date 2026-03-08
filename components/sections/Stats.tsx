@@ -14,14 +14,11 @@ export function Stats({ config }: StatsProps) {
   return (
     <section
       className="py-24 px-6"
-      style={{
-        background: `linear-gradient(180deg, var(--bg-base) 0%, var(--bg-surface) 100%)`,
-      }}
+      style={{ backgroundColor: '#0a0a0a' }}
     >
       <div className="max-w-5xl mx-auto">
         <h2
-          className="text-3xl md:text-4xl font-bold text-center mb-16"
-          style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}
+          className="font-display text-3xl md:text-4xl font-bold text-center mb-16 text-white"
         >
           {stats.titulo}
         </h2>
@@ -37,24 +34,29 @@ export function Stats({ config }: StatsProps) {
               }}
             >
               <div
-                className="text-5xl font-bold mb-3"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  color: 'var(--color-primario)',
-                }}
+                className="text-4xl md:text-5xl font-bold mb-3 font-sans"
+                style={{ color: 'var(--color-primario)' }}
               >
                 <AnimatedNumber value={item.valor} />
               </div>
-              <p className="text-base" style={{ color: 'var(--text-secondary)' }}>
-                {item.descripcion}
+              <p className="font-sans text-base text-white mb-3">
+                {item.label}
               </p>
+              {item.fuente && (
+                <p
+                  className="font-sans text-xs"
+                  style={{ color: 'var(--text-secondary)' }}
+                >
+                  Fuente: {item.fuente}
+                </p>
+              )}
             </div>
           ))}
         </div>
 
         {stats.parrafoLegal && (
           <div
-            className="mt-12 p-6 rounded-xl text-sm leading-relaxed"
+            className="mt-12 p-6 rounded-xl font-sans text-sm leading-relaxed"
             style={{
               backgroundColor: 'rgba(255,255,255,0.03)',
               border: '1px solid var(--border)',

@@ -5,6 +5,7 @@ import { VerticalConfig } from '@/lib/types'
 import { initTracking } from '@/lib/tracking'
 import { TopBar } from '@/components/sections/TopBar'
 import { Hero } from '@/components/sections/Hero'
+import { ClientLogos } from '@/components/sections/ClientLogos'
 import { Stats } from '@/components/sections/Stats'
 import { Products } from '@/components/sections/Products'
 import { HowItWorks } from '@/components/sections/HowItWorks'
@@ -31,6 +32,7 @@ export function LandingPage({ config }: LandingPageProps) {
     <main>
       <TopBar config={config} />
       <Hero config={config} />
+      <ClientLogos config={config} />
       <Stats config={config} />
       <Products config={config} />
       <HowItWorks config={config} />

@@ -1,14 +1,14 @@
 import { VerticalConfig } from '@/lib/types'
 
-const WHATSAPP_URL = `https://wa.me/${process.env.NEXT_PUBLIC_TOMAS_PHONE}?text=Hola%20Tom%C3%A1s%2C%20soy%20operador%20tur%C3%ADstico%20y%20quiero%20cotizar%20un%20seguro%20para%20mi%20empresa`
+const WHATSAPP_URL = `https://wa.me/${process.env.NEXT_PUBLIC_TOMAS_PHONE}?text=Hola%2C%20soy%20operador%20tur%C3%ADstico%20y%20quiero%20cotizar%20un%20seguro%20para%20mi%20empresa`
 
 export const config: VerticalConfig = {
   vertical: 'turismo',
 
   meta: {
-    titulo: 'Seguros para Empresas de Turismo y Outdoor — Towen Seguros',
+    titulo: 'Seguros para Empresas de Turismo y Outdoor | Towen Seguros',
     descripcion:
-      'Responsabilidad Civil, Accidentes Personales, Vehículos y D&O para operadores turísticos. Cotiza en minutos con Tomás. Sin papeleos.',
+      'Responsabilidad Civil, Accidentes Personales, Vehículos y D&O para operadores turísticos. Cotiza en minutos con un experto. Sin papeleos.',
   },
 
   marca: {
@@ -20,20 +20,19 @@ export const config: VerticalConfig = {
 
   topbar: {
     telefono: '+56 9 XXXX XXXX',
-    ctaTexto: 'Cotizar ahora →',
+    ctaTexto: 'Cotizar ahora',
     ctaUrl: WHATSAPP_URL,
   },
 
   hero: {
-    badge: '🛡 Especialistas en turismo de aventura',
-    headline:
-      'Tu empresa de turismo necesita seguros que entiendan la montaña, el río y la ruta.',
+    badge: 'Especialistas en seguros para turismo',
+    headline: 'Los operadores turísticos que crecen, operan protegidos.',
     subheadline:
-      'Responsabilidad Civil, D&O, Accidentes Personales y Vehículos diseñados para operadores turísticos. Sin papeleos — cotiza en minutos con Tomás.',
+      'En el turismo hay accidentes y demandas. Los que están bien cubiertos los enfrentan con tranquilidad y siguen operando. Cotiza Responsabilidad Civil, Accidentes Personales, Vehículos e Incendio con un experto en minutos.',
     imagenFondo:
       'https://images.unsplash.com/photo-1469521669194-babb45599def?w=1920&q=80',
     cta: {
-      texto: '🟢 Hablar con Tomás — WhatsApp',
+      texto: 'Hablar con un experto de seguros por WhatsApp',
       url: WHATSAPP_URL,
       tipo: 'whatsapp',
       subTexto: 'Respuesta inmediata · Sin compromiso',
@@ -45,26 +44,39 @@ export const config: VerticalConfig = {
     ],
   },
 
+  clientLogos: {
+    titulo: 'Empresas que confían en Towen Seguros',
+    logos: [
+      { nombre: 'Cliente 1', placeholder: true },
+      { nombre: 'Cliente 2', placeholder: true },
+      { nombre: 'Cliente 3', placeholder: true },
+      { nombre: 'Cliente 4', placeholder: true },
+      { nombre: 'Cliente 5', placeholder: true },
+    ],
+  },
+
   stats: {
-    titulo:
-      'El turismo de aventura tiene riesgos reales. Los números no mienten.',
+    titulo: 'El turismo de aventura tiene riesgos reales. Los números no mienten.',
     items: [
       {
-        valor: '$480M',
-        descripcion: 'pérdidas por accidentes en turismo Latam (2023)',
+        valor: 'Ley 19.496',
+        label: 'establece responsabilidad objetiva del operador turístico ante accidentes de sus clientes',
+        fuente: 'Código Civil chileno + Ley del Consumidor',
       },
       {
-        valor: '1 de 3',
-        descripcion: 'operadores NO tiene cobertura de RC suficiente',
+        valor: '+29',
+        label: 'compañías de seguros disponibles para cotizar tu cobertura',
+        fuente: 'Red NICO Corredores de Seguros',
       },
       {
-        valor: '73%',
-        descripcion: 'de demandas civiles van contra el operador turístico',
+        valor: '1 a 3 años',
+        label: 'puede durar un juicio civil por responsabilidad. Sin seguro, lo enfrentas tú',
+        fuente: 'Wolfenson Abogados / Código de Procedimiento Civil',
       },
       {
-        valor: 'UF 5.000',
-        descripcion:
-          'monto promedio de demanda por accidente en turismo de aventura',
+        valor: 'UF 500+',
+        label: 'puede alcanzar una demanda por daño moral en accidentes con lesiones graves',
+        fuente: 'Jurisprudencia chilena - Corte Suprema',
       },
     ],
     parrafoLegal:
@@ -72,36 +84,47 @@ export const config: VerticalConfig = {
   },
 
   productos: {
-    titulo: 'Los 4 seguros que todo operador turístico necesita',
+    titulo: 'Los seguros más solicitados por operadores turísticos',
     items: [
       {
-        icono: '🛡',
-        nombre: 'Responsabilidad Civil',
+        icono: '⚖️',
+        nombre: 'Responsabilidad Civil frente a Terceros',
         descripcion:
-          'Cubre daños a terceros durante tus actividades: trekking, rafting, ski, canopy, cabalgatas. Incluye gastos médicos, daño patrimonial y defensa legal.',
-        datosClave: 'Cobertura desde UF 500 hasta UF 10.000 según actividad',
+          'En el turismo de aventura los accidentes existen. La diferencia está en estar preparado: este seguro cubre las demandas civiles, los gastos legales y las indemnizaciones para que sigas operando sin que un incidente ponga en riesgo todo lo que construiste.',
+        destacado: true,
+        tag: 'El más solicitado',
       },
       {
-        icono: '🧑‍⚕️',
+        icono: '🏥',
         nombre: 'Accidentes Personales',
         descripcion:
-          'Protege a tus guías, staff y pasajeros ante lesiones. Incluye invalidez, muerte accidental y gastos médicos.',
-        datosClave: 'Cobertura por persona desde UF 200',
+          'Tus clientes y guías merecen salir protegidos. Este seguro cubre lesiones, fracturas o incapacidad temporal durante actividades outdoor. Las isapres y Fonasa no cubren accidentes deportivos, esta póliza sí. Operar con esto activo es operar con confianza.',
+        destacado: false,
+        tag: null,
       },
       {
         icono: '🚐',
-        nombre: 'Vehículos Comerciales',
+        nombre: 'Vehículos de Transporte Turístico',
         descripcion:
-          'Flotilla de vans, minibuses y vehículos de trabajo con coberturas para uso comercial de transporte de pasajeros.',
-        datosClave: 'Todo riesgo o terceros según antigüedad del vehículo',
+          'Si llevas clientes en tu van o minibús, el seguro de auto convencional no te cubre. Esta póliza está diseñada específicamente para transporte remunerado de pasajeros. Así tus traslados son parte del servicio, no un punto ciego.',
+        destacado: false,
+        tag: null,
       },
       {
-        icono: '💼',
-        nombre: 'D&O / Responsabilidad Directivos',
+        icono: '🔥',
+        nombre: 'Incendio para Hoteles y Locales',
         descripcion:
-          'Protege a dueños y directivos ante demandas por decisiones de gestión. Fundamental si tienes socios, inversionistas o accedes a créditos.',
-        datosClave:
-          'Especialmente relevante para operadores medianos y grandes',
+          'Años de inversión en tu infraestructura merecen respaldo. Esta cobertura protege tu establecimiento, equipamiento y contenido ante incendios, y cubre pérdida de renta mientras recuperas la operación. Tu negocio sigue en pie incluso cuando lo imprevisto ocurre.',
+        destacado: false,
+        tag: null,
+      },
+      {
+        icono: '🏢',
+        nombre: 'D&O — Responsabilidad de Directivos',
+        descripcion:
+          'Los buenos directivos toman decisiones difíciles. Esta póliza protege tu patrimonio personal ante reclamaciones por decisiones de gestión, para que lideres con libertad sabiendo que estás respaldado.',
+        destacado: false,
+        tag: null,
       },
     ],
   },
@@ -111,15 +134,15 @@ export const config: VerticalConfig = {
     pasos: [
       {
         numero: '01',
-        titulo: 'Escríbele a Tomás por WhatsApp',
+        titulo: 'Escríbenos por WhatsApp',
         descripcion:
           '"Hola, quiero cotizar un seguro para mi empresa de turismo"',
       },
       {
         numero: '02',
-        titulo: 'Tomás te hace las preguntas correctas',
+        titulo: 'Te hacemos las preguntas correctas',
         descripcion:
-          'En 5–10 minutos recopila todo: actividades, empleados, vehículos, facturación anual.',
+          'En 5 a 10 minutos recopilamos todo: actividades, empleados, vehículos, facturación anual.',
       },
       {
         numero: '03',
@@ -135,14 +158,14 @@ export const config: VerticalConfig = {
     items: [
       {
         texto:
-          'Tomás nos cotizó todo en una sola tarde. Teníamos 3 pólizas distintas y las consolidó en una solución más barata y mejor cubierta.',
+          'Nos cotizaron todo en una sola tarde. Teníamos 3 pólizas distintas y las consolidaron en una solución más barata y mejor cubierta.',
         autor: 'Carlos M.',
         empresa: 'Operador Outdoor',
         ciudad: 'Coyhaique',
       },
       {
         texto:
-          'Nunca habíamos tenido cobertura de D&O. No sabíamos que la necesitábamos hasta que Tomás nos explicó los riesgos. Hoy dormimos más tranquilos.',
+          'Nunca habíamos tenido cobertura de D&O. No sabíamos que la necesitábamos hasta que nos explicaron los riesgos. Hoy dormimos más tranquilos.',
         autor: 'Patricia V.',
         empresa: 'Termas & Lodges',
         ciudad: 'Pucón',
@@ -164,7 +187,7 @@ export const config: VerticalConfig = {
       {
         pregunta: '¿Cuánto cuesta un seguro de RC para mi empresa?',
         respuesta:
-          'Depende de tu facturación anual, tipo de actividades y número de personas. Coberturas básicas de RC para operadores pequeños parten desde $80.000/mes. Tomás te da el precio exacto en minutos.',
+          'Depende de tu facturación anual, tipo de actividades y número de personas. Coberturas básicas de RC para operadores pequeños parten desde $80.000/mes. Te damos el precio exacto en minutos.',
       },
       {
         pregunta: '¿Necesito seguro si ya tengo los waivers firmados?',
@@ -180,12 +203,12 @@ export const config: VerticalConfig = {
       {
         pregunta: '¿Cuánto demora el proceso?',
         respuesta:
-          'La cotización demora 24–48 horas. La emisión de la póliza 3–5 días hábiles.',
+          'La cotización demora 24 a 48 horas. La emisión de la póliza 3 a 5 días hábiles.',
       },
       {
         pregunta: '¿Trabajan con empresas pequeñas?',
         respuesta:
-          'Sí. Desde guías independientes hasta grandes operadores. El tamaño no importa — el riesgo es el mismo.',
+          'Sí. Desde guías independientes hasta grandes operadores. El tamaño no importa, el riesgo es el mismo.',
       },
     ],
   },
@@ -194,10 +217,10 @@ export const config: VerticalConfig = {
     imagenFondo:
       'https://images.unsplash.com/photo-1534488972407-5a4aa1e47d84?w=1920&q=80',
     headline:
-      'Un accidente sin seguro puede cerrar tu empresa en semanas. Una conversación con Tomás puede protegerla para siempre.',
+      'Un accidente sin seguro puede cerrar tu empresa en semanas. Una conversación con nuestros expertos puede protegerla para siempre.',
     subheadline: 'Más de 50 operadores ya lo hicieron. ¿Cuándo te sumas?',
     cta: {
-      texto: '🟢 Hablar con Tomás — Es gratis',
+      texto: 'Hablar con un experto. Es gratis.',
       url: WHATSAPP_URL,
     },
     microCopy: 'Sin compromiso · Sin formularios · Respuesta en minutos',

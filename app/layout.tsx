@@ -1,5 +1,19 @@
 import type { Metadata } from 'next'
+import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+  weight: ['400', '600', '700', '800'],
+})
 
 export const metadata: Metadata = {
   title: 'Towen Seguros',
@@ -16,10 +30,6 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
         {gtmId && (
           <script
             dangerouslySetInnerHTML={{
@@ -32,7 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         )}
       </head>
-      <body>
+      <body className={`${inter.variable} ${playfair.variable}`}>
         {gtmId && (
           <noscript>
             <iframe

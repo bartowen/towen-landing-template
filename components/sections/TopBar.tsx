@@ -19,8 +19,8 @@ export function TopBar({ config }: TopBarProps) {
     >
       <div className="flex items-center gap-2">
         <span
-          className="text-lg font-semibold tracking-tight"
-          style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primario)' }}
+          className="font-display text-lg font-semibold tracking-tight"
+          style={{ color: 'var(--color-primario)' }}
         >
           {config.marca.nombre}
         </span>
@@ -30,7 +30,7 @@ export function TopBar({ config }: TopBarProps) {
         {config.topbar.telefono && (
           <a
             href={`tel:${config.topbar.telefono.replace(/\s/g, '')}`}
-            className="hidden md:block text-sm"
+            className="hidden md:block font-sans text-sm"
             style={{ color: 'var(--text-secondary)' }}
           >
             {config.topbar.telefono}
@@ -41,7 +41,7 @@ export function TopBar({ config }: TopBarProps) {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackWhatsAppClick('topbar', config.tracking.whatsappEventName)}
-          className="px-4 py-2 rounded-lg text-sm font-semibold transition-opacity hover:opacity-90"
+          className="px-4 py-2 rounded-lg font-sans text-sm font-semibold transition-opacity hover:opacity-90"
           style={{
             backgroundColor: 'var(--color-primario)',
             color: '#0a0c0f',

@@ -31,41 +31,52 @@ export function Products({ config }: ProductsProps) {
           {/* Featured card — full width */}
           {featured && (
             <div
-              className="relative rounded-2xl p-7 mb-6 transition-all duration-300"
+              className="relative rounded-2xl overflow-hidden mb-6 transition-all duration-300"
               style={{
                 backgroundColor: 'var(--white)',
                 border: '2px solid var(--navy-500)',
                 boxShadow: '0 4px 24px rgba(37,99,235,0.1)',
               }}
             >
-              {featured.tag && (
-                <span
-                  className="absolute top-5 right-5 font-jakarta font-bold text-xs text-white px-3 py-1 rounded-full"
-                  style={{ backgroundColor: 'var(--navy-500)' }}
-                >
-                  {featured.tag}
-                </span>
-              )}
-              <div className="flex items-start gap-5">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-                  style={{ backgroundColor: 'rgba(37,99,235,0.08)' }}
-                >
-                  {featured.icono}
+              {featured.imagenUrl && (
+                <div className="h-44 w-full overflow-hidden">
+                  <img
+                    src={featured.imagenUrl}
+                    alt={featured.nombre}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div>
-                  <h3
-                    className="font-jakarta font-semibold text-lg mb-2"
-                    style={{ color: 'var(--navy-900)' }}
+              )}
+              <div className="p-7">
+                {featured.tag && (
+                  <span
+                    className="absolute top-3 right-3 font-jakarta font-bold text-xs text-white px-3 py-1 rounded-full"
+                    style={{ backgroundColor: 'var(--navy-500)' }}
                   >
-                    {featured.nombre}
-                  </h3>
-                  <p
-                    className="font-sans text-sm leading-relaxed"
-                    style={{ color: 'var(--gray-400)' }}
+                    {featured.tag}
+                  </span>
+                )}
+                <div className="flex items-start gap-4">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                    style={{ backgroundColor: 'rgba(37,99,235,0.08)' }}
                   >
-                    {featured.descripcion}
-                  </p>
+                    {featured.icono}
+                  </div>
+                  <div>
+                    <h3
+                      className="font-jakarta font-bold text-lg mb-2"
+                      style={{ color: 'var(--navy-900)' }}
+                    >
+                      {featured.nombre}
+                    </h3>
+                    <p
+                      className="font-sans text-sm leading-relaxed"
+                      style={{ color: 'var(--gray-400)' }}
+                    >
+                      {featured.descripcion}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -79,36 +90,48 @@ export function Products({ config }: ProductsProps) {
               return (
                 <div
                   key={i}
-                  className="relative rounded-2xl p-6 flex flex-col transition-all duration-250 cursor-default"
+                  className="relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 cursor-default"
                   style={{
                     backgroundColor: 'var(--white)',
                     border: '1px solid var(--gray-100)',
-                    transform: active ? 'translateY(-2px)' : 'none',
+                    transform: active ? 'translateY(-3px)' : 'none',
                     boxShadow: active
-                      ? '0 4px 20px rgba(0,0,0,0.08)'
+                      ? '0 8px 24px rgba(0,0,0,0.1)'
                       : '0 1px 3px rgba(0,0,0,0.04)',
                   }}
                   onMouseEnter={() => setHovered(idx)}
                   onMouseLeave={() => setHovered(null)}
                 >
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 flex-shrink-0"
-                    style={{ backgroundColor: 'rgba(37,99,235,0.08)' }}
-                  >
-                    {item.icono}
+                  {item.imagenUrl && (
+                    <div className="h-44 w-full overflow-hidden">
+                      <img
+                        src={item.imagenUrl}
+                        alt={item.nombre}
+                        className="w-full h-full object-cover transition-transform duration-500"
+                        style={{ transform: active ? 'scale(1.03)' : 'scale(1)' }}
+                      />
+                    </div>
+                  )}
+                  <div className="p-6 flex flex-col flex-1">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center text-xl mb-3 flex-shrink-0"
+                      style={{ backgroundColor: 'rgba(37,99,235,0.08)' }}
+                    >
+                      {item.icono}
+                    </div>
+                    <h3
+                      className="font-jakarta font-bold text-base mb-2"
+                      style={{ color: 'var(--navy-900)' }}
+                    >
+                      {item.nombre}
+                    </h3>
+                    <p
+                      className="font-sans text-sm leading-relaxed flex-1"
+                      style={{ color: 'var(--gray-400)' }}
+                    >
+                      {item.descripcion}
+                    </p>
                   </div>
-                  <h3
-                    className="font-jakarta font-semibold text-lg mb-2"
-                    style={{ color: 'var(--navy-900)' }}
-                  >
-                    {item.nombre}
-                  </h3>
-                  <p
-                    className="font-sans text-sm leading-relaxed flex-1"
-                    style={{ color: 'var(--gray-400)' }}
-                  >
-                    {item.descripcion}
-                  </p>
                 </div>
               )
             })}
@@ -117,9 +140,8 @@ export function Products({ config }: ProductsProps) {
       </section>
 
       <SectionCTA
-        texto="¿No sabes cuál necesitas?"
-        subtexto="En 5 minutos te asesoramos sin costo."
-        variante="dark"
+        texto="¿Cuál necesitas para tu empresa?"
+        variante="light"
         ctaUrl={config.hero.cta.url}
         eventName={config.tracking.whatsappEventName}
       />

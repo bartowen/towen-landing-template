@@ -36,7 +36,7 @@ export function FAQ({ config }: FAQProps) {
   if (!faq.titulo && faq.items.length === 0) return null
 
   return (
-    <section className="py-20 px-6" style={{ backgroundColor: 'var(--white)' }}>
+    <section className="py-20 px-6" style={{ backgroundColor: 'var(--gray-50)' }}>
       <div className="max-w-3xl mx-auto">
         <h2
           className="font-jakarta font-extrabold text-3xl md:text-4xl text-center mb-14"
@@ -49,9 +49,7 @@ export function FAQ({ config }: FAQProps) {
           {faq.items.map((item, i) => (
             <div
               key={i}
-              style={{
-                borderBottom: '1px solid var(--gray-100)',
-              }}
+              style={{ borderBottom: '1px solid var(--gray-100)' }}
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}

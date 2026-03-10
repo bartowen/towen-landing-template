@@ -20,21 +20,12 @@ export function CTAFinal({ config }: CTAFinalProps) {
 
   return (
     <section
-      className="relative py-32 px-6 text-center overflow-hidden"
+      className="py-32 px-6 text-center"
       style={{
-        backgroundImage: `url(${ctaFinal.imagenFondo})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
+        background: 'linear-gradient(135deg, #0f1f3d 0%, #1a3a6b 100%)',
       }}
     >
-      {/* Navy overlay (replaces black) */}
-      <div
-        className="absolute inset-0"
-        style={{ backgroundColor: 'rgba(15,31,61,0.82)' }}
-      />
-
-      <div className="relative z-10 max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         <h2
           className="font-jakarta font-extrabold text-4xl md:text-5xl mb-6 leading-tight text-white"
         >
@@ -42,7 +33,7 @@ export function CTAFinal({ config }: CTAFinalProps) {
         </h2>
 
         <p
-          className="font-sans text-lg md:text-xl mb-10"
+          className="font-sans text-lg mb-10"
           style={{ color: 'rgba(255,255,255,0.7)' }}
         >
           {ctaFinal.subheadline}
@@ -53,14 +44,14 @@ export function CTAFinal({ config }: CTAFinalProps) {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackWhatsAppClick('cta_final', tracking.whatsappEventName)}
-          className="inline-flex items-center gap-3 px-10 py-5 rounded-xl font-jakarta font-bold text-xl transition-all hover:bg-gray-100"
+          className="inline-flex items-center gap-3 px-10 py-5 rounded-xl font-jakarta font-bold text-lg transition-all hover:bg-gray-100 hover:-translate-y-0.5"
           style={{
             backgroundColor: 'var(--white)',
             color: 'var(--navy-900)',
             boxShadow: '0 6px 32px rgba(0,0,0,0.2)',
           }}
         >
-          <span className="text-green-500"><WAIcon /></span>
+          <span style={{ color: '#25D366' }}><WAIcon /></span>
           {ctaFinal.cta.texto}
         </a>
 
@@ -73,12 +64,11 @@ export function CTAFinal({ config }: CTAFinalProps) {
           </p>
         )}
 
-        {/* Trust badges */}
         <div className="mt-14 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
           {[
-            { icon: '🛡️', text: 'Regulados por la CMF' },
-            { icon: '🏢', text: 'Miembros de ACOSEG' },
-            { icon: '🤝', text: '+29 compañías disponibles' },
+            { icon: '🏛️', text: 'Regulados por la CMF' },
+            { icon: '🤝', text: 'Miembros de ACOSEG' },
+            { icon: '🏢', text: '+29 compañías disponibles' },
           ].map((b, i) => (
             <span
               key={i}

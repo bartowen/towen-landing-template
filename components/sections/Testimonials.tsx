@@ -1,7 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { VerticalConfig } from '@/lib/types'
 import { SectionCTA } from '@/components/ui/SectionCTA'
 
@@ -11,14 +10,12 @@ interface TestimonialsProps {
 
 export function Testimonials({ config }: TestimonialsProps) {
   const { testimonios } = config
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
 
   if (!testimonios.titulo && testimonios.items.length === 0) return null
 
   return (
     <>
-      <section className="py-20 px-6" style={{ backgroundColor: 'var(--gray-50)' }}>
+      <section className="py-20 px-6" style={{ backgroundColor: 'var(--white)' }}>
         <div className="max-w-6xl mx-auto">
           <h2
             className="font-jakarta font-extrabold text-3xl md:text-4xl text-center mb-12"
@@ -27,16 +24,17 @@ export function Testimonials({ config }: TestimonialsProps) {
             {testimonios.titulo}
           </h2>
 
-          <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonios.items.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 24 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.13 }}
                 className="relative rounded-2xl p-6 flex flex-col"
                 style={{
-                  backgroundColor: 'var(--white)',
+                  backgroundColor: 'var(--gray-50)',
                   border: '1px solid var(--gray-100)',
                 }}
               >
@@ -102,18 +100,6 @@ export function Testimonials({ config }: TestimonialsProps) {
                       backgroundColor: 'var(--white)',
                       border: '1px solid var(--gray-100)',
                       color: 'var(--gray-400)',
-                      filter: 'grayscale(60%)',
-                      opacity: 0.65,
-                    }}
-                    onMouseEnter={(e) => {
-                      const el = e.currentTarget as HTMLDivElement
-                      el.style.filter = 'grayscale(0%)'
-                      el.style.opacity = '1'
-                    }}
-                    onMouseLeave={(e) => {
-                      const el = e.currentTarget as HTMLDivElement
-                      el.style.filter = 'grayscale(60%)'
-                      el.style.opacity = '0.65'
                     }}
                   >
                     {logo}
@@ -126,12 +112,12 @@ export function Testimonials({ config }: TestimonialsProps) {
       </section>
 
       <SectionCTA
-        texto="Más de 50 operadores ya operan protegidos."
-        subtexto={config.ctaFinal.subheadline}
-        variante="light"
+        texto="Más de 50 operadores ya operan protegidos en Chile."
+        subtexto="¿Cuándo te sumas?"
+        variante="dark"
         ctaUrl={config.hero.cta.url}
-        ctaTexto="Cotizar ahora"
         eventName={config.tracking.whatsappEventName}
+        large
       />
     </>
   )

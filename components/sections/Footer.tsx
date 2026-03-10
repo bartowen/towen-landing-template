@@ -12,14 +12,12 @@ export function Footer({ config }: FooterProps) {
       className="py-12 px-6"
       style={{
         backgroundColor: 'var(--navy-900)',
-        borderTop: '1px solid rgba(255,255,255,0.08)',
+        borderTop: '1px solid rgba(255,255,255,0.1)',
       }}
     >
       <div className="max-w-4xl mx-auto text-center space-y-3">
-        {/* Brand name — solo lugar con gold */}
         <p
-          className="font-jakarta font-semibold text-lg"
-          style={{ color: 'var(--color-primario)' }}
+          className="font-jakarta font-bold text-lg text-white"
         >
           {marca.nombre}
         </p>
@@ -47,8 +45,7 @@ export function Footer({ config }: FooterProps) {
               ((e.currentTarget as HTMLAnchorElement).style.color = '#ffffff')
             }
             onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLAnchorElement).style.color =
-                'rgba(255,255,255,0.5)')
+              ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.5)')
             }
           >
             {footer.email}

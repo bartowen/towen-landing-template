@@ -13,9 +13,9 @@ export const config: VerticalConfig = {
 
   marca: {
     nombre: 'Towen Seguros',
-    colorPrimario: '#d4a853',
-    colorFondo: '#0a0c0f',
-    colorTexto: '#f8f9fa',
+    colorPrimario: '#2563eb',
+    colorFondo: '#ffffff',
+    colorTexto: '#0f1f3d',
   },
 
   topbar: {
@@ -30,7 +30,7 @@ export const config: VerticalConfig = {
     subheadline:
       'En el turismo hay accidentes y demandas. Los que están bien cubiertos los enfrentan con tranquilidad y siguen operando. Cotiza Responsabilidad Civil, Accidentes Personales, Vehículos e Incendio con un experto en minutos.',
     imagenFondo:
-      'https://images.unsplash.com/photo-1469521669194-babb45599def?w=1920&q=80',
+      'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80',
     cta: {
       texto: 'Hablar con un experto de seguros por WhatsApp',
       url: WHATSAPP_URL,
@@ -38,9 +38,9 @@ export const config: VerticalConfig = {
       subTexto: 'Respuesta inmediata · Sin compromiso',
     },
     trustItems: [
-      '✓ Más de 50 operadores asegurados en Chile',
-      '✓ Respuesta en menos de 2 horas',
-      '✓ Corredor asociado a NICO Corredores de Seguros',
+      'Más de 50 operadores asegurados en Chile',
+      'Respuesta en menos de 2 horas',
+      'Corredor asociado a NICO Corredores de Seguros',
     ],
   },
 
@@ -93,30 +93,34 @@ export const config: VerticalConfig = {
           'En el turismo de aventura los accidentes existen. La diferencia está en estar preparado: este seguro cubre las demandas civiles, los gastos legales y las indemnizaciones para que sigas operando sin que un incidente ponga en riesgo todo lo que construiste.',
         destacado: true,
         tag: 'El más solicitado',
+        imagenUrl: 'https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=600&q=80',
       },
       {
         icono: '🏥',
         nombre: 'Accidentes Personales',
         descripcion:
-          'Tus clientes y guías merecen salir protegidos. Este seguro cubre lesiones, fracturas o incapacidad temporal durante actividades outdoor. Las isapres y Fonasa no cubren accidentes deportivos, esta póliza sí. Operar con esto activo es operar con confianza.',
+          'Tus clientes y guías merecen salir protegidos. Este seguro cubre lesiones, fracturas o incapacidad temporal durante actividades outdoor. Las isapres y Fonasa no cubren accidentes deportivos, esta póliza sí.',
         destacado: false,
         tag: null,
+        imagenUrl: 'https://images.unsplash.com/photo-1522163182402-834f871fd851?w=600&q=80',
       },
       {
         icono: '🚐',
         nombre: 'Vehículos de Transporte Turístico',
         descripcion:
-          'Si llevas clientes en tu van o minibús, el seguro de auto convencional no te cubre. Esta póliza está diseñada específicamente para transporte remunerado de pasajeros. Así tus traslados son parte del servicio, no un punto ciego.',
+          'Si llevas clientes en tu van o minibús, el seguro de auto convencional no te cubre. Esta póliza está diseñada específicamente para transporte remunerado de pasajeros.',
         destacado: false,
         tag: null,
+        imagenUrl: 'https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=600&q=80',
       },
       {
         icono: '🔥',
         nombre: 'Incendio para Hoteles y Locales',
         descripcion:
-          'Años de inversión en tu infraestructura merecen respaldo. Esta cobertura protege tu establecimiento, equipamiento y contenido ante incendios, y cubre pérdida de renta mientras recuperas la operación. Tu negocio sigue en pie incluso cuando lo imprevisto ocurre.',
+          'Años de inversión en tu infraestructura merecen respaldo. Esta cobertura protege tu establecimiento, equipamiento y contenido ante incendios, y cubre pérdida de renta mientras recuperas la operación.',
         destacado: false,
         tag: null,
+        imagenUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
       },
       {
         icono: '🏢',
@@ -125,6 +129,7 @@ export const config: VerticalConfig = {
           'Los buenos directivos toman decisiones difíciles. Esta póliza protege tu patrimonio personal ante reclamaciones por decisiones de gestión, para que lideres con libertad sabiendo que estás respaldado.',
         destacado: false,
         tag: null,
+        imagenUrl: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80',
       },
     ],
   },
@@ -214,8 +219,7 @@ export const config: VerticalConfig = {
   },
 
   ctaFinal: {
-    imagenFondo:
-      'https://images.unsplash.com/photo-1534488972407-5a4aa1e47d84?w=1920&q=80',
+    imagenFondo: '',
     headline:
       'Un accidente sin seguro puede cerrar tu empresa en semanas. Una conversación con nuestros expertos puede protegerla para siempre.',
     subheadline: 'Más de 50 operadores ya lo hicieron. ¿Cuándo te sumas?',
@@ -238,5 +242,17 @@ export const config: VerticalConfig = {
     gtmId: process.env.NEXT_PUBLIC_GTM_ID,
     metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID,
     whatsappEventName: 'whatsapp_click_turismo',
+  },
+
+  galeria: {
+    titulo: 'El turismo que protegemos',
+    imagenes: [
+      'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80',
+      'https://images.unsplash.com/photo-1522163182402-834f871fd851?w=800&q=80',
+      'https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=800&q=80',
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+      'https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=800&q=80',
+      'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80',
+    ],
   },
 }

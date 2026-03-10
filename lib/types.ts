@@ -62,6 +62,7 @@ export interface VerticalConfig {
       destacado?: boolean
       tag?: string | null
       datosClave?: string
+      imagenUrl?: string
     }>
   }
 
@@ -112,5 +113,10 @@ export interface VerticalConfig {
     gtmId?: string
     metaPixelId?: string
     whatsappEventName: string
+  }
+
+  galeria?: {
+    titulo: string
+    imagenes: string[]
   }
 }

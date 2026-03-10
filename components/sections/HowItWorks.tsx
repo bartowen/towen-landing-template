@@ -1,7 +1,7 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import React from 'react'
+import { motion } from 'framer-motion'
 import { VerticalConfig } from '@/lib/types'
 import { SectionCTA } from '@/components/ui/SectionCTA'
 
@@ -11,12 +11,8 @@ interface HowItWorksProps {
 
 export function HowItWorks({ config }: HowItWorksProps) {
   const { comoFunciona } = config
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
 
   if (!comoFunciona.titulo && comoFunciona.pasos.length === 0) return null
-
-  const ultimoPaso = comoFunciona.pasos[comoFunciona.pasos.length - 1]
 
   return (
     <>
@@ -29,49 +25,51 @@ export function HowItWorks({ config }: HowItWorksProps) {
             {comoFunciona.titulo}
           </h2>
 
-          {/* ─── Desktop: horizontal ─── */}
-          <div ref={ref} className="hidden md:flex items-start">
+          {/* ─── Desktop: horizontal with connectors ─── */}
+          <div className="hidden md:flex items-start justify-between">
             {comoFunciona.pasos.map((paso, i) => (
-              <div key={i} className="flex-1 flex flex-col items-center text-center relative">
-                {/* Dashed connector (not last) */}
+              <React.Fragment key={i}>
+                {/* Step */}
+                <div className="flex flex-col items-center text-center" style={{ width: 200 }}>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.6 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.38, delay: i * 0.18 }}
+                    className="w-14 h-14 rounded-full flex items-center justify-center font-jakarta font-extrabold text-xl text-white mb-5"
+                    style={{ backgroundColor: 'var(--navy-500)' }}
+                  >
+                    {i + 1}
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.42, delay: i * 0.18 + 0.12 }}
+                  >
+                    <h3
+                      className="font-jakarta font-semibold text-base mb-2"
+                      style={{ color: 'var(--navy-900)' }}
+                    >
+                      {paso.titulo}
+                    </h3>
+                    <p
+                      className="font-sans text-sm leading-relaxed"
+                      style={{ color: 'var(--gray-400)' }}
+                    >
+                      {paso.descripcion}
+                    </p>
+                  </motion.div>
+                </div>
+
+                {/* Connector (not after last) */}
                 {i < comoFunciona.pasos.length - 1 && (
                   <div
-                    className="absolute top-7 left-1/2 w-full"
-                    style={{
-                      borderTop: '2px dashed var(--gray-100)',
-                      marginTop: '-1px',
-                    }}
+                    className="flex-1 self-start mt-7 mx-2"
+                    style={{ borderTop: '2px dashed var(--gray-100)' }}
                   />
                 )}
-
-                {/* Number circle */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.6 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 }}
-                  transition={{ duration: 0.38, delay: i * 0.18 }}
-                  className="w-14 h-14 rounded-full flex items-center justify-center font-jakarta font-extrabold text-xl text-white relative z-10 mb-5"
-                  style={{ backgroundColor: 'var(--navy-500)' }}
-                >
-                  {i + 1}
-                </motion.div>
-
-                <motion.div
-                  className="px-4"
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-                  transition={{ duration: 0.42, delay: i * 0.18 + 0.12 }}
-                >
-                  <h3
-                    className="font-jakarta font-semibold text-base mb-2"
-                    style={{ color: 'var(--navy-900)' }}
-                  >
-                    {paso.titulo}
-                  </h3>
-                  <p className="font-sans text-sm leading-relaxed" style={{ color: 'var(--gray-400)' }}>
-                    {paso.descripcion}
-                  </p>
-                </motion.div>
-              </div>
+              </React.Fragment>
             ))}
           </div>
 
@@ -80,10 +78,10 @@ export function HowItWorks({ config }: HowItWorksProps) {
             {comoFunciona.pasos.map((paso, i) => (
               <motion.div
                 key={i}
-                ref={i === 0 ? ref : undefined}
                 initial={{ opacity: 0, x: -16 }}
-                animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -16 }}
-                transition={{ duration: 0.4, delay: i * 0.15 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.12 }}
                 className="flex items-start gap-5"
               >
                 <div
@@ -99,7 +97,10 @@ export function HowItWorks({ config }: HowItWorksProps) {
                   >
                     {paso.titulo}
                   </h3>
-                  <p className="font-sans text-sm leading-relaxed" style={{ color: 'var(--gray-400)' }}>
+                  <p
+                    className="font-sans text-sm leading-relaxed"
+                    style={{ color: 'var(--gray-400)' }}
+                  >
                     {paso.descripcion}
                   </p>
                 </div>
@@ -110,9 +111,8 @@ export function HowItWorks({ config }: HowItWorksProps) {
       </section>
 
       <SectionCTA
-        texto="Así de fácil. Empieza ahora."
-        subtexto={ultimoPaso?.descripcion}
-        variante="light"
+        texto="Cotiza en minutos. Sin formularios eternos."
+        variante="bordered"
         ctaUrl={config.hero.cta.url}
         eventName={config.tracking.whatsappEventName}
       />

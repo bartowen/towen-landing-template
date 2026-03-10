@@ -12,8 +12,6 @@ export function Stats({ config }: StatsProps) {
   const { stats } = config
   if (!stats.titulo && stats.items.length === 0) return null
 
-  const primerPaso = config.comoFunciona.pasos[0]
-
   return (
     <>
       <section className="py-20 px-6" style={{ backgroundColor: 'var(--white)' }}>
@@ -81,8 +79,8 @@ export function Stats({ config }: StatsProps) {
       </section>
 
       <SectionCTA
-        texto={primerPaso?.titulo ?? 'Cotiza tu seguro en minutos'}
-        subtexto={primerPaso?.descripcion}
+        texto="¿No sabes por dónde empezar?"
+        subtexto="En 5 minutos te explicamos qué coberturas necesita tu empresa."
         variante="dark"
         ctaUrl={config.hero.cta.url}
         eventName={config.tracking.whatsappEventName}

@@ -2,37 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Navy design system (hardcoded — used by all sections except Hero/TopBar) ─── */
+/* ─── Design system: Navy + Teal + White ─── */
 :root {
-  /* Brand accent — used only by Hero badge/glow/trust + TopBar logo */
-  --color-primario:  #d4a853;
-
-  /* Navy palette */
   --navy-900: #0f1f3d;
   --navy-700: #1a3a6b;
   --navy-500: #2563eb;
-
-  /* Neutrals */
+  --teal-500: #0891b2;
   --white:    #ffffff;
   --gray-50:  #f8fafc;
   --gray-100: #f1f5f9;
   --gray-400: #94a3b8;
-
-  /* WhatsApp */
-  --cta-green: #25D366;
-
-  /* Legacy vars — still read by Hero, LandingPage, TopBar */
-  --color-fondo:    #0a0c0f;
-  --color-texto:    #f8f9fa;
-  --text-primary:   #f8f9fa;
-  --text-secondary: rgba(248,249,250,0.55);
-  --surface-1:      rgba(255,255,255,0.04);
-  --surface-2:      rgba(255,255,255,0.08);
-  --border-sutil:   rgba(255,255,255,0.08);
-  --bg-base:        #0a0c0f;
-  --bg-surface:     #111418;
-  --bg-card:        rgba(255,255,255,0.04);
-  --border:         rgba(255,255,255,0.08);
+  --green-wa: #25D366;
 }
 
 /* ─── Reset ─── */
@@ -45,8 +25,8 @@
 html, body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: var(--color-fondo);
-  color: var(--text-primary);
+  background-color: var(--white);
+  color: var(--navy-900);
   font-family: var(--font-inter, 'Inter', sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

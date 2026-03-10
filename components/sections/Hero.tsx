@@ -39,7 +39,7 @@ export function Hero({ config }: HeroProps) {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10,12,15,0.68)' }} />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(15,31,61,0.72)' }} />
         {/* Radial glow */}
         <div
           className="absolute inset-0 pointer-events-none"

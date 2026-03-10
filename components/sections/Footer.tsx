@@ -1,5 +1,4 @@
 import { VerticalConfig } from '@/lib/types'
-import { isColorDark } from '@/lib/theme'
 
 interface FooterProps {
   config: VerticalConfig
@@ -7,34 +6,34 @@ interface FooterProps {
 
 export function Footer({ config }: FooterProps) {
   const { footer, marca } = config
-  const dark = isColorDark(marca.colorFondo)
 
   return (
     <footer
       className="py-12 px-6"
       style={{
-        backgroundColor: dark ? '#06080a' : '#f8fafc',
-        borderTop: '1px solid var(--border-sutil)',
+        backgroundColor: 'var(--navy-900)',
+        borderTop: '1px solid rgba(255,255,255,0.08)',
       }}
     >
       <div className="max-w-4xl mx-auto text-center space-y-3">
+        {/* Brand name — solo lugar con gold */}
         <p
-          className="font-display text-lg font-semibold"
+          className="font-jakarta font-semibold text-lg"
           style={{ color: 'var(--color-primario)' }}
         >
           {marca.nombre}
         </p>
 
         <p
-          className="font-sans text-sm"
-          style={{ color: 'var(--text-secondary)' }}
+          className="font-sans text-xs"
+          style={{ color: 'rgba(255,255,255,0.5)' }}
         >
           {footer.razonSocial} · {footer.rut}
         </p>
 
         <p
           className="font-sans text-xs max-w-xl mx-auto leading-relaxed"
-          style={{ color: 'var(--text-secondary)', opacity: 0.7 }}
+          style={{ color: 'rgba(255,255,255,0.35)' }}
         >
           {footer.descripcionLegal}
         </p>
@@ -42,8 +41,15 @@ export function Footer({ config }: FooterProps) {
         {footer.email && (
           <a
             href={`mailto:${footer.email}`}
-            className="inline-block font-sans text-xs transition-opacity hover:opacity-70"
-            style={{ color: 'var(--color-primario)' }}
+            className="inline-block font-sans text-xs transition-colors"
+            style={{ color: 'rgba(255,255,255,0.5)' }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLAnchorElement).style.color = '#ffffff')
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLAnchorElement).style.color =
+                'rgba(255,255,255,0.5)')
+            }
           >
             {footer.email}
           </a>
@@ -51,7 +57,7 @@ export function Footer({ config }: FooterProps) {
 
         <p
           className="font-sans text-xs pt-4"
-          style={{ color: 'var(--text-secondary)', opacity: 0.38 }}
+          style={{ color: 'rgba(255,255,255,0.2)' }}
         >
           © {new Date().getFullYear()} {marca.nombre}. Todos los derechos reservados.
         </p>

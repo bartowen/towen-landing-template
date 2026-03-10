@@ -16,69 +16,54 @@ export function HowItWorks({ config }: HowItWorksProps) {
   if (!comoFunciona.titulo && comoFunciona.pasos.length === 0) return null
 
   return (
-    <section className="py-24 px-6" style={{ backgroundColor: 'var(--bg-base)' }}>
+    <section className="py-20 px-6" style={{ backgroundColor: 'var(--white)' }}>
       <div className="max-w-5xl mx-auto">
         <h2
-          className="font-display text-3xl md:text-4xl font-bold text-center mb-20"
-          style={{ color: 'var(--text-primary)' }}
+          className="font-jakarta font-extrabold text-3xl md:text-4xl text-center mb-16"
+          style={{ color: 'var(--navy-900)' }}
         >
           {comoFunciona.titulo}
         </h2>
 
-        {/* ─── Desktop: horizontal with connector lines ─── */}
-        <div ref={ref} className="hidden md:flex items-start gap-0">
+        {/* ─── Desktop: horizontal ─── */}
+        <div ref={ref} className="hidden md:flex items-start">
           {comoFunciona.pasos.map((paso, i) => (
-            <div
-              key={i}
-              className="flex-1 relative flex flex-col items-center text-center px-6"
-            >
-              {/* Connector line (right half to next step) */}
+            <div key={i} className="flex-1 flex flex-col items-center text-center relative">
+              {/* Dashed connector (not last) */}
               {i < comoFunciona.pasos.length - 1 && (
                 <div
-                  className="absolute top-8 left-1/2 w-full h-px overflow-hidden"
-                  style={{ backgroundColor: 'var(--border-sutil)' }}
-                >
-                  <motion.div
-                    className="h-full"
-                    style={{ backgroundColor: 'var(--color-primario)', opacity: 0.55 }}
-                    initial={{ width: '0%' }}
-                    animate={inView ? { width: '100%' } : { width: '0%' }}
-                    transition={{ duration: 0.7, delay: i * 0.3 + 0.3, ease: 'easeInOut' }}
-                  />
-                </div>
+                  className="absolute top-7 left-1/2 w-full"
+                  style={{
+                    borderTop: '2px dashed var(--gray-100)',
+                    marginTop: '-1px',
+                  }}
+                />
               )}
 
               {/* Number circle */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 }}
-                transition={{ duration: 0.4, delay: i * 0.2 }}
-                className="w-16 h-16 rounded-full flex items-center justify-center font-sans text-xl font-bold relative z-10 mb-7"
-                style={{
-                  backgroundColor: 'var(--surface-1)',
-                  border: '2px solid var(--color-primario)',
-                  color: 'var(--color-primario)',
-                  boxShadow: '0 0 24px rgba(212,168,83,0.2)',
-                }}
+                transition={{ duration: 0.38, delay: i * 0.18 }}
+                className="w-14 h-14 rounded-full flex items-center justify-center font-jakarta font-extrabold text-xl text-white relative z-10 mb-5"
+                style={{ backgroundColor: 'var(--navy-500)' }}
               >
                 {i + 1}
               </motion.div>
 
               <motion.div
+                className="px-4"
                 initial={{ opacity: 0, y: 14 }}
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-                transition={{ duration: 0.5, delay: i * 0.2 + 0.15 }}
+                transition={{ duration: 0.42, delay: i * 0.18 + 0.12 }}
               >
                 <h3
-                  className="font-jakarta text-base font-semibold mb-2"
-                  style={{ color: 'var(--text-primary)' }}
+                  className="font-jakarta font-semibold text-base mb-2"
+                  style={{ color: 'var(--navy-900)' }}
                 >
                   {paso.titulo}
                 </h3>
-                <p
-                  className="font-sans text-sm leading-relaxed"
-                  style={{ color: 'var(--text-secondary)' }}
-                >
+                <p className="font-sans text-sm leading-relaxed" style={{ color: 'var(--gray-400)' }}>
                   {paso.descripcion}
                 </p>
               </motion.div>
@@ -86,58 +71,36 @@ export function HowItWorks({ config }: HowItWorksProps) {
           ))}
         </div>
 
-        {/* ─── Mobile: vertical with left line ─── */}
-        <div className="md:hidden relative pl-6">
-          <div
-            className="absolute left-6 top-0 bottom-0 w-px overflow-hidden"
-            style={{ backgroundColor: 'var(--border-sutil)' }}
-          >
+        {/* ─── Mobile: vertical ─── */}
+        <div className="md:hidden space-y-10">
+          {comoFunciona.pasos.map((paso, i) => (
             <motion.div
-              className="w-full"
-              style={{ backgroundColor: 'var(--color-primario)', opacity: 0.5 }}
-              initial={{ height: '0%' }}
-              animate={inView ? { height: '100%' } : { height: '0%' }}
-              transition={{ duration: 1.3, ease: 'easeInOut' }}
-            />
-          </div>
-
-          <div className="space-y-12">
-            {comoFunciona.pasos.map((paso, i) => (
-              <motion.div
-                key={i}
-                ref={i === 0 ? ref : undefined}
-                initial={{ opacity: 0, x: -18 }}
-                animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -18 }}
-                transition={{ duration: 0.45, delay: i * 0.18 }}
-                className="flex items-start gap-5"
+              key={i}
+              ref={i === 0 ? ref : undefined}
+              initial={{ opacity: 0, x: -16 }}
+              animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -16 }}
+              transition={{ duration: 0.4, delay: i * 0.15 }}
+              className="flex items-start gap-5"
+            >
+              <div
+                className="w-12 h-12 rounded-full flex items-center justify-center font-jakarta font-extrabold text-base text-white flex-shrink-0"
+                style={{ backgroundColor: 'var(--navy-500)' }}
               >
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 font-sans font-bold relative z-10"
-                  style={{
-                    backgroundColor: 'var(--surface-1)',
-                    border: '2px solid var(--color-primario)',
-                    color: 'var(--color-primario)',
-                  }}
+                {i + 1}
+              </div>
+              <div className="pt-1">
+                <h3
+                  className="font-jakarta font-semibold text-base mb-1"
+                  style={{ color: 'var(--navy-900)' }}
                 >
-                  {i + 1}
-                </div>
-                <div className="pt-1.5">
-                  <h3
-                    className="font-jakarta text-base font-semibold mb-1"
-                    style={{ color: 'var(--text-primary)' }}
-                  >
-                    {paso.titulo}
-                  </h3>
-                  <p
-                    className="font-sans text-sm leading-relaxed"
-                    style={{ color: 'var(--text-secondary)' }}
-                  >
-                    {paso.descripcion}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                  {paso.titulo}
+                </h3>
+                <p className="font-sans text-sm leading-relaxed" style={{ color: 'var(--gray-400)' }}>
+                  {paso.descripcion}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

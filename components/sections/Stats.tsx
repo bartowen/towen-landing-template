@@ -1,7 +1,6 @@
 'use client'
 
 import { VerticalConfig } from '@/lib/types'
-import { isColorDark } from '@/lib/theme'
 import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
 
 interface StatsProps {
@@ -12,18 +11,13 @@ export function Stats({ config }: StatsProps) {
   const { stats } = config
   if (!stats.titulo && stats.items.length === 0) return null
 
-  const dark = isColorDark(config.marca.colorFondo)
-
   return (
-    <section
-      className="py-24 px-6"
-      style={{ backgroundColor: dark ? '#090909' : 'var(--bg-surface)' }}
-    >
+    <section className="py-20 px-6" style={{ backgroundColor: 'var(--white)' }}>
       <div className="max-w-5xl mx-auto">
         {stats.titulo && (
           <h2
-            className="font-display text-3xl md:text-4xl font-bold text-center mb-16"
-            style={{ color: 'var(--text-primary)' }}
+            className="font-jakarta font-extrabold text-3xl md:text-4xl text-center mb-12"
+            style={{ color: 'var(--navy-900)' }}
           >
             {stats.titulo}
           </h2>
@@ -35,28 +29,29 @@ export function Stats({ config }: StatsProps) {
               key={i}
               className="p-8 rounded-2xl flex flex-col items-center text-center"
               style={{
-                backgroundColor: 'var(--surface-1)',
-                border: '1px solid var(--border-sutil)',
+                backgroundColor: 'var(--white)',
+                border: '1px solid var(--gray-100)',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
               }}
             >
               <div
-                className="font-display text-4xl md:text-5xl font-bold mb-3"
-                style={{ color: 'var(--color-primario)' }}
+                className="font-jakarta font-extrabold text-4xl mb-3"
+                style={{ color: 'var(--navy-500)' }}
               >
                 <AnimatedNumber value={item.valor} />
               </div>
 
               <p
-                className="font-sans text-base leading-snug mb-3"
-                style={{ color: 'var(--text-primary)' }}
+                className="font-sans font-medium text-base leading-snug mb-2"
+                style={{ color: 'var(--navy-900)' }}
               >
                 {item.label}
               </p>
 
               {item.fuente && (
                 <p
-                  className="font-sans text-xs"
-                  style={{ color: 'var(--text-secondary)' }}
+                  className="font-sans text-xs mt-1"
+                  style={{ color: 'var(--gray-400)' }}
                 >
                   Fuente: {item.fuente}
                 </p>
@@ -67,14 +62,14 @@ export function Stats({ config }: StatsProps) {
 
         {stats.parrafoLegal && (
           <div
-            className="mt-10 p-5 rounded-xl font-sans text-sm leading-relaxed flex gap-3"
+            className="mt-8 p-4 rounded-r-xl font-sans text-sm leading-relaxed flex gap-3 items-start"
             style={{
-              backgroundColor: dark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)',
-              border: '1px solid var(--border-sutil)',
-              color: 'var(--text-secondary)',
+              backgroundColor: 'var(--gray-50)',
+              borderLeft: '4px solid var(--navy-500)',
+              color: 'var(--gray-400)',
             }}
           >
-            <span className="flex-shrink-0 text-base">⚠️</span>
+            <span className="flex-shrink-0">⚠️</span>
             <span>{stats.parrafoLegal}</span>
           </div>
         )}

@@ -1,7 +1,6 @@
 'use client'
 
 import { trackWhatsAppClick } from '@/lib/tracking'
-import { isColorDark } from '@/lib/theme'
 import { VerticalConfig } from '@/lib/types'
 
 interface CTAFinalProps {
@@ -16,115 +15,36 @@ function WAIcon() {
   )
 }
 
-function hexToRgb(hex: string): string {
-  try {
-    const h = hex.replace('#', '')
-    return `${parseInt(h.slice(0, 2), 16)},${parseInt(h.slice(2, 4), 16)},${parseInt(h.slice(4, 6), 16)}`
-  } catch { return '212,168,83' }
-}
-
 export function CTAFinal({ config }: CTAFinalProps) {
   const { ctaFinal, tracking } = config
-  const dark = isColorDark(config.marca.colorFondo)
-  const rgb = hexToRgb(config.marca.colorPrimario)
 
-  /* ─── DARK: bg image + overlay ─── */
-  if (dark) {
-    return (
-      <section
-        className="relative py-32 px-6 text-center overflow-hidden"
-        style={{
-          backgroundImage: `url(${ctaFinal.imagenFondo})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-        }}
-      >
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(8,10,13,0.82)' }} />
-        {/* Glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `radial-gradient(ellipse 60% 50% at 50% 60%,
-              rgba(${rgb},0.12) 0%, transparent 68%)`,
-          }}
-        />
-
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <h2
-            className="font-display text-3xl md:text-5xl font-bold mb-6 leading-tight text-white"
-          >
-            {ctaFinal.headline}
-          </h2>
-
-          <p
-            className="font-sans text-lg md:text-xl mb-10"
-            style={{ color: 'rgba(255,255,255,0.65)' }}
-          >
-            {ctaFinal.subheadline}
-          </p>
-
-          <a
-            href={ctaFinal.cta.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackWhatsAppClick('cta_final', tracking.whatsappEventName)}
-            className="inline-flex items-center gap-3 px-10 py-5 rounded-xl text-white font-sans font-bold text-xl whatsapp-pulse transition-transform hover:scale-105"
-            style={{
-              backgroundColor: '#25D366',
-              boxShadow: '0 6px 48px rgba(37,211,102,0.42)',
-            }}
-          >
-            <WAIcon />
-            {ctaFinal.cta.texto}
-          </a>
-
-          {ctaFinal.microCopy && (
-            <p
-              className="font-sans mt-4 text-sm"
-              style={{ color: 'rgba(255,255,255,0.45)' }}
-            >
-              {ctaFinal.microCopy}
-            </p>
-          )}
-
-          {/* Trust badges */}
-          <div className="mt-14 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
-            {[
-              { icon: '🛡️', text: 'Regulados por la CMF' },
-              { icon: '🏢', text: 'Miembros de ACOSEG' },
-              { icon: '🤝', text: '+29 compañías disponibles' },
-            ].map((b, i) => (
-              <span
-                key={i}
-                className="font-sans text-sm flex items-center gap-2"
-                style={{ color: 'rgba(255,255,255,0.45)' }}
-              >
-                {b.icon} {b.text}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  /* ─── LIGHT: solid gradient bg ─── */
   return (
     <section
       className="relative py-32 px-6 text-center overflow-hidden"
       style={{
-        background: `linear-gradient(135deg,
-          rgba(${rgb},0.92) 0%,
-          rgba(${rgb},0.75) 100%)`,
+        backgroundImage: `url(${ctaFinal.imagenFondo})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
       }}
     >
-      <div className="max-w-3xl mx-auto">
-        <h2 className="font-jakarta text-3xl md:text-5xl font-extrabold mb-6 leading-tight text-white">
+      {/* Navy overlay (replaces black) */}
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: 'rgba(15,31,61,0.82)' }}
+      />
+
+      <div className="relative z-10 max-w-3xl mx-auto">
+        <h2
+          className="font-jakarta font-extrabold text-4xl md:text-5xl mb-6 leading-tight text-white"
+        >
           {ctaFinal.headline}
         </h2>
 
-        <p className="font-sans text-lg md:text-xl mb-10 text-white" style={{ opacity: 0.85 }}>
+        <p
+          className="font-sans text-lg md:text-xl mb-10"
+          style={{ color: 'rgba(255,255,255,0.7)' }}
+        >
           {ctaFinal.subheadline}
         </p>
 
@@ -133,23 +53,27 @@ export function CTAFinal({ config }: CTAFinalProps) {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackWhatsAppClick('cta_final', tracking.whatsappEventName)}
-          className="inline-flex items-center gap-3 px-10 py-5 rounded-xl font-sans font-bold text-xl transition-transform hover:scale-105"
+          className="inline-flex items-center gap-3 px-10 py-5 rounded-xl font-jakarta font-bold text-xl transition-all hover:bg-gray-100"
           style={{
-            backgroundColor: '#ffffff',
-            color: config.marca.colorPrimario,
-            boxShadow: '0 6px 32px rgba(0,0,0,0.18)',
+            backgroundColor: 'var(--white)',
+            color: 'var(--navy-900)',
+            boxShadow: '0 6px 32px rgba(0,0,0,0.2)',
           }}
         >
-          <WAIcon />
+          <span className="text-green-500"><WAIcon /></span>
           {ctaFinal.cta.texto}
         </a>
 
         {ctaFinal.microCopy && (
-          <p className="font-sans mt-4 text-sm text-white" style={{ opacity: 0.65 }}>
+          <p
+            className="font-sans mt-4 text-xs"
+            style={{ color: 'rgba(255,255,255,0.5)' }}
+          >
             {ctaFinal.microCopy}
           </p>
         )}
 
+        {/* Trust badges */}
         <div className="mt-14 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
           {[
             { icon: '🛡️', text: 'Regulados por la CMF' },
@@ -158,8 +82,8 @@ export function CTAFinal({ config }: CTAFinalProps) {
           ].map((b, i) => (
             <span
               key={i}
-              className="font-sans text-sm flex items-center gap-2 text-white"
-              style={{ opacity: 0.7 }}
+              className="font-sans text-sm flex items-center gap-2"
+              style={{ color: 'rgba(255,255,255,0.45)' }}
             >
               {b.icon} {b.text}
             </span>

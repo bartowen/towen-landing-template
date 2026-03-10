@@ -2,24 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Design tokens (dark defaults — overridden by LandingPage.tsx) ─── */
+/* ─── Navy design system (hardcoded — used by all sections except Hero/TopBar) ─── */
 :root {
-  --color-primario:   #d4a853;
-  --color-fondo:      #0a0c0f;
-  --color-texto:      #f8f9fa;
+  /* Brand accent — used only by Hero badge/glow/trust + TopBar logo */
+  --color-primario:  #d4a853;
 
-  --text-primary:     #f8f9fa;
-  --text-secondary:   rgba(248, 249, 250, 0.55);
+  /* Navy palette */
+  --navy-900: #0f1f3d;
+  --navy-700: #1a3a6b;
+  --navy-500: #2563eb;
 
-  --surface-1:        rgba(255, 255, 255, 0.04);
-  --surface-2:        rgba(255, 255, 255, 0.08);
-  --border-sutil:     rgba(255, 255, 255, 0.08);
+  /* Neutrals */
+  --white:    #ffffff;
+  --gray-50:  #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-400: #94a3b8;
 
-  /* legacy aliases — kept for any remaining inline usages */
-  --bg-base:     #0a0c0f;
-  --bg-surface:  #111418;
-  --bg-card:     rgba(255, 255, 255, 0.04);
-  --border:      rgba(255, 255, 255, 0.08);
+  /* WhatsApp */
+  --cta-green: #25D366;
+
+  /* Legacy vars — still read by Hero, LandingPage, TopBar */
+  --color-fondo:    #0a0c0f;
+  --color-texto:    #f8f9fa;
+  --text-primary:   #f8f9fa;
+  --text-secondary: rgba(248,249,250,0.55);
+  --surface-1:      rgba(255,255,255,0.04);
+  --surface-2:      rgba(255,255,255,0.08);
+  --border-sutil:   rgba(255,255,255,0.08);
+  --bg-base:        #0a0c0f;
+  --bg-surface:     #111418;
+  --bg-card:        rgba(255,255,255,0.04);
+  --border:         rgba(255,255,255,0.08);
 }
 
 /* ─── Reset ─── */
@@ -39,11 +52,6 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Smooth color transitions when theme vars change ─── */
-body > * {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 /* ─── WhatsApp pulse ─── */
 @keyframes whatsapp-pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
@@ -53,9 +61,7 @@ body > * {
   animation: whatsapp-pulse 2.2s ease-in-out infinite;
 }
 
-/* ─── Utility: smooth scroll ─── */
 html { scroll-behavior: smooth; }
 
-/* ─── Scrollbar hide for horizontal logo rows ─── */
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }

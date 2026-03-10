@@ -7,9 +7,17 @@ interface ProductsProps {
   config: VerticalConfig
 }
 
+function hexToRgb(hex: string): string {
+  try {
+    const h = hex.replace('#', '')
+    return `${parseInt(h.slice(0, 2), 16)},${parseInt(h.slice(2, 4), 16)},${parseInt(h.slice(4, 6), 16)}`
+  } catch { return '212,168,83' }
+}
+
 export function Products({ config }: ProductsProps) {
   const { productos } = config
   const [hovered, setHovered] = useState<number | null>(null)
+  const rgb = hexToRgb(config.marca.colorPrimario)
 
   if (!productos.titulo && productos.items.length === 0) return null
 
@@ -23,75 +31,87 @@ export function Products({ config }: ProductsProps) {
           {productos.titulo}
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {productos.items.map((item, i) => (
-            <div
-              key={i}
-              className="relative p-8 rounded-2xl transition-all duration-300 cursor-default"
-              style={{
-                backgroundColor: 'var(--bg-card)',
-                border: `${item.destacado ? '2px' : '1px'} solid ${
-                  item.destacado
-                    ? 'var(--color-primario)'
-                    : hovered === i
-                    ? 'var(--color-primario)'
-                    : 'var(--border)'
-                }`,
-                transform: hovered === i ? 'translateY(-4px)' : 'translateY(0)',
-                boxShadow: item.destacado
-                  ? '0 0 30px rgba(212, 168, 83, 0.15)'
-                  : hovered === i
-                  ? '0 20px 40px rgba(0,0,0,0.3)'
-                  : 'none',
-              }}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              {/* Tag badge */}
-              {item.tag && (
-                <div
-                  className="absolute top-4 right-4 px-3 py-1 rounded-full font-sans text-xs font-bold"
-                  style={{
-                    backgroundColor: 'var(--color-primario)',
-                    color: '#0a0c0f',
-                  }}
-                >
-                  {item.tag}
-                </div>
-              )}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {productos.items.map((item, i) => {
+            const isActive = hovered === i
+            const featured = item.destacado
 
+            return (
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-6"
-                style={{ backgroundColor: 'rgba(212, 168, 83, 0.15)' }}
+                key={i}
+                className="relative p-7 rounded-2xl flex flex-col transition-all duration-300 cursor-default"
+                style={{
+                  backgroundColor: 'var(--surface-1)',
+                  border: `${featured ? '2px' : '1px'} solid ${
+                    featured
+                      ? 'var(--color-primario)'
+                      : isActive
+                      ? `rgba(${rgb},0.5)`
+                      : 'var(--border-sutil)'
+                  }`,
+                  transform: isActive && !featured ? 'translateY(-6px)' : 'none',
+                  boxShadow: featured
+                    ? `0 0 40px rgba(${rgb},0.18), 0 8px 32px rgba(0,0,0,0.2)`
+                    : isActive
+                    ? '0 20px 48px rgba(0,0,0,0.25)'
+                    : 'none',
+                }}
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
               >
-                {item.icono}
-              </div>
+                {/* Tag badge */}
+                {item.tag && (
+                  <div
+                    className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full font-sans text-xs font-bold whitespace-nowrap"
+                    style={{
+                      backgroundColor: 'var(--color-primario)',
+                      color: '#0a0c0f',
+                    }}
+                  >
+                    {item.tag}
+                  </div>
+                )}
 
-              <h3
-                className="font-display text-xl font-bold mb-3"
-                style={{ color: 'var(--text-primary)' }}
-              >
-                {item.nombre}
-              </h3>
-
-              <p className="font-sans text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                {item.descripcion}
-              </p>
-
-              {item.datosClave && (
+                {/* Icon */}
                 <div
-                  className="mt-6 px-4 py-2 rounded-lg font-sans text-xs font-semibold"
-                  style={{
-                    backgroundColor: 'rgba(212, 168, 83, 0.1)',
-                    color: 'var(--color-primario)',
-                    border: '1px solid rgba(212, 168, 83, 0.2)',
-                  }}
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5 flex-shrink-0"
+                  style={{ backgroundColor: `rgba(${rgb},0.12)` }}
                 >
-                  {item.datosClave}
+                  {item.icono}
                 </div>
-              )}
-            </div>
-          ))}
+
+                {/* Name */}
+                <h3
+                  className="font-jakarta text-base font-semibold mb-3 leading-snug"
+                  style={{ color: 'var(--text-primary)' }}
+                >
+                  {item.nombre}
+                </h3>
+
+                {/* Description */}
+                <p
+                  className="font-sans text-sm leading-relaxed flex-1"
+                  style={{ color: 'var(--text-secondary)' }}
+                >
+                  {item.descripcion}
+                </p>
+
+                {/* Legacy datosClave */}
+                {item.datosClave && (
+                  <div
+                    className="mt-5 px-3 py-2 rounded-lg font-sans text-xs font-semibold"
+                    style={{
+                      backgroundColor: `rgba(${rgb},0.08)`,
+                      color: 'var(--color-primario)',
+                      border: `1px solid rgba(${rgb},0.18)`,
+                    }}
+                  >
+                    {item.datosClave}
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

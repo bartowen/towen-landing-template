@@ -9,28 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'sans-serif'],
-        display: ['var(--font-playfair)', 'serif'],
+        sans:    ['var(--font-inter)',    'Inter',             'sans-serif'],
+        display: ['var(--font-playfair)', 'Playfair Display',  'serif'],
+        jakarta: ['var(--font-jakarta)',  'Plus Jakarta Sans', 'sans-serif'],
       },
       colors: {
-        bg: {
-          base: '#0a0c0f',
-          surface: '#111418',
-          card: '#161b22',
-        },
-        text: {
-          primary: '#f8f9fa',
-          secondary: '#8b949e',
-        },
+        gold: '#d4a853',
       },
       animation: {
-        pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'whatsapp-pulse': 'whatsapp-pulse 2s ease-in-out infinite',
+        'whatsapp-pulse': 'whatsapp-pulse 2.2s ease-in-out infinite',
       },
       keyframes: {
         'whatsapp-pulse': {
-          '0%, 100%': { boxShadow: '0 0 0 0 rgba(37, 211, 102, 0.4)' },
-          '50%': { boxShadow: '0 0 30px 10px rgba(37, 211, 102, 0.2)' },
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(37, 211, 102, 0.45)' },
+          '50%':       { boxShadow: '0 0 28px 10px rgba(37, 211, 102, 0.18)' },
         },
       },
     },
